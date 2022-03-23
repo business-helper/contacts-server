@@ -5,7 +5,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className="">
       {
-        [1,2,3].map(index => <Contact key={index} />)
+        [1, 2, 3].map(index => <Contact key={index} />)
       }
     </div>
   )
