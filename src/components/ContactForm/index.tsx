@@ -9,32 +9,20 @@ interface IContactFormProps {
   contact?: IContact;
 }
 
-const initialContact: IContact = {
-  name: '',
-  lastName: '',
-  email: '',
-  phoneNumber: '',
-  age: 0,
-  avatar: '',
-  linkToWebsite: '',
-  tags: [],
-}
 
-export const ContactForm: React.FC<IContactFormProps> = ({ contact: _contact }) => {
+export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
   const navigate = useNavigate();
   const { register, formState: { errors }, handleSubmit, setValue } = useForm()
-  const [contact, setContact] = useState<IContact>(initialContact);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (_contact) {
-      setContact(_contact);
+    if (contact) {
+      const keys: Array<keyof IContact> = ['name', 'lastName', 'email', 'phoneNumber', 'age', 'linkToWebsite'];
+      keys.forEach((key) => setValue(key, contact[key]));
     }
-    // setValue('name', "bi")
 
     return () => { }
-  }, [_contact]);
+  }, [contact]);
 
   const handleOnSubmit = handleSubmit((data) => {
     console.log('[data]', data);

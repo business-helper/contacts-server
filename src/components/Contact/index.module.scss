@@ -19,3 +19,19 @@
   @apply border border-solid border-primary-lighter;
   border-radius: 50%;
 }
+
+@mixin action-icon {
+  @apply mx-1 cursor-pointer;
+  width: 1rem;
+  height: 1rem;
+}
+
+.editIcon {
+  @include action-icon;
+  fill: #2383c2;
+}
+
+.trashIcon {
+  @include action-icon;
+  fill: #b13313;
+}

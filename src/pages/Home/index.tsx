@@ -1,10 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from 'store/hooks';
 import { ContactList } from 'components/Contact';
-import contacts from 'data/contacts.json';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const contacts = useAppSelector(state => state.contacts);
+
   const handleOnAddContact = () => {
     navigate('/contacts/add');
   }
