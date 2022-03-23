@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ContactList } from 'components/Contact';
 import contacts from 'data/contacts.json';
 
 export const HomePage: React.FC = () => {
+  const navigate = useNavigate();
   const handleOnAddContact = () => {
-
+    navigate('/contacts/add');
   }
 
   return (
