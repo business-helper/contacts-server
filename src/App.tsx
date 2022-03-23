@@ -1,13 +1,18 @@
 import React from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-import { Header } from './compoments/Header';
+import { DefaultLayout } from './layouts/DefaultLayout';
+import { HomePage } from './pages/Home';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <Header />
-        Hello
-    </div>
+    <BrowserRouter>
+      <DefaultLayout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </DefaultLayout>
+    </BrowserRouter>
   );
 }
 
