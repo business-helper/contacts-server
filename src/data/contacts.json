@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Serina",
+    "lastName": "Ross",
+    "phoneNumber": "(514) 535-1340",
+    "email": "sem.consequat@icloud.com",
+    "age": 23,
+    "avatar": "https://gravatar.com/avatar/29a0825f22f00fd32a8b794dfc3a5f49?s=400&d=robohash&r=x",
+    "linkToWebsite": "https://gravatar.com/avatar/29a0825f22f00fd32a8b794dfc3a5f49?s=400&d=robohash&r=x",
+    "tags": [
+      "vestibulum",
+      "lorem",
+      "sit",
+      "amet",
+      "ultricies",
+      "sem",
+      "magna",
+      "nec",
+      "quam",
+      "Curabitur"
+    ]
+  },
+  {
+    "name": "Xavier",
+    "lastName": "Mckenzie",
+    "phoneNumber": "1-489-834-3575",
+    "email": "sit.amet@aol.edu",
+    "age": 25,
+    "avatar": "https://gravatar.com/avatar/a015e0abfd6c656d3650d2a3c62fc717?s=400&d=robohash&r=x",
+    "linkToWebsite": "https://gravatar.com/avatar/a015e0abfd6c656d3650d2a3c62fc717?s=400&d=robohash&r=x",
+    "tags": [
+      "rutrum",
+      "lorem",
+      "risus",
+      "Morbi",
+      "metus",
+      "Vivamus",
+      "euismod",
+      "urna",
+      "Nullam"
+    ]
+  },
+  {
+    "name": "Kay",
+    "lastName": "Black",
+    "phoneNumber": "1-547-333-1673",
+    "email": "duis.volutpat@outlook.org",
+    "age": 28,
+    "avatar": "https://gravatar.com/avatar/007b8af0a61cb5938a7da2d2110aed5c?s=400&d=robohash&r=x",
+    "linkToWebsite": "https://gravatar.com/avatar/007b8af0a61cb5938a7da2d2110aed5c?s=400&d=robohash&r=x",
+    "tags": [
+      "natoque",
+      "penatibus",
+      "magnis",
+      "parturient",
+      "montes",
+      "nascetur",
+      "ridiculus",
+      "mus"
+    ]
+  }
+]

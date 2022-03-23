@@ -1,12 +1,11 @@
 import React from 'react';
-import { Contact } from 'compoments/Contact';
+import { ContactList } from 'compoments/Contact';
+import contacts from 'data/contacts.json';
 
 export const HomePage: React.FC = () => {
   return (
     <div className="">
-      {
-        [1, 2, 3].map(index => <Contact key={index} />)
-      }
+      <ContactList contacts={contacts} />
     </div>
   )
 }

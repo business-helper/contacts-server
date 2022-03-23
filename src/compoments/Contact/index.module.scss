@@ -1,0 +1,21 @@
+.table {
+  @apply w-full;
+  border-collapse: separate;
+  border-spacing: 0rem 1rem;
+
+  td,
+  th {
+    @apply border-solid border-primary-light border-t border-b py-3 px-2 text-left capitalize;
+    &:first-child {
+      @apply border-l;
+    }
+    &:last-child {
+      @apply border-r;
+    }
+  }
+}
+
+.avatar {
+  @apply border border-solid border-primary-lighter;
+  border-radius: 50%;
+}
