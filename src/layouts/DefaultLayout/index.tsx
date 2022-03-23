@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '../../compoments/Header';
+import { Header } from 'compoments/Header';
 import styles from './index.module.scss';
 
 export const DefaultLayout: React.FC = ({ children }) => {
