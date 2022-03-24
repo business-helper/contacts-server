@@ -80,8 +80,13 @@ export const ContactItem: React.FC<IContactItemProps> = ({ contact, onDelete, on
       <td>{contact.email}</td>
       <td>{contact.phoneNumber}</td>
       <td>{contact.age}</td>
-      <td><a href={contact.linkToWebsite}>Website</a></td>
-      <td>Tags</td>
+      <td>
+        {contact.linkToWebsite &&
+          <a className="hover:underline hover:text-light-1" target="_blank" href={contact.linkToWebsite}>Website</a>
+        }
+        {!contact.linkToWebsite && <span className="text-orange-700 text-sm">No Website Link</span>}
+      </td>
+      <td>{contact.tags}</td>
       <td>
         <div className="flex items-center px-2">
           {/* <img className={styles.editIcon} src={EditIcon} /> */}

@@ -98,7 +98,7 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
 
         <div className="form-group">
           <label>Link To Website</label>
-          <input {...register("linkToWebsite", { required: true, maxLength: 100 })} />
+          <input {...register("linkToWebsite")} />
           {errors.linkToWebsite?.type == 'required' && <p className="form-error">Website link is required!</p>}
         </div>
 
