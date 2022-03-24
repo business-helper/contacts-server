@@ -39,7 +39,7 @@ class Contact extends Model<IContactAttributes, IContactCreationAttributes> {
   name: string;
 
   @Column
-  lastName: Date;
+  lastName: string;
 
   @Column
   email: string;
