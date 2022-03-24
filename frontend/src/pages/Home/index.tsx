@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'store/hooks';
-import { initContacts, getContacts } from 'store/contact/slice';
+import { initContacts, getContacts, increasePage } from 'store/contact/slice';
 import { ContactList } from 'components/Contact';
 
 export const HomePage: React.FC = () => {
@@ -14,6 +14,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     if (page === 0) {
+      dispatch(increasePage())
       dispatch(getContacts({ page: 1 }));
     }
   }, []);

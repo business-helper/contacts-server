@@ -1,11 +1,23 @@
-import type { IContact } from "types";
+import type {
+  IContact,
+  IContactMutation,
+  IAPISuccessRespose,
+  IAPIErrorResponse,
+} from "types";
 import { restAPI } from "./config";
 
 export function getContactsRequest(page: number, limit: number): Promise<any> {
   return restAPI
-    .get("/contacts", {
+    .get<IAPISuccessRespose>("/contacts", {
       params: { limit, page },
     })
-    .then((res) => res.data);
+    .then((res) => res.data.data as IContact[]);
 }
-export const DEMO = "test";
+
+export function addContactRequest(data: FormData) {
+  return restAPI
+    .post<IAPISuccessRespose>("/contacts", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then((res) => res.data.data as IContact);
+}
