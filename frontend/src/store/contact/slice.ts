@@ -33,13 +33,15 @@ export const updateContact = createAsyncThunk(
     contactProvider.updateContactRequest(id, data)
 );
 
+export const deleteContact = createAsyncThunk(
+  "contacts/deleteContact",
+  (id: number, thunkAPI) => contactProvider.deleteContactRequest(id)
+);
+
 export const contactSlice = createSlice({
   name: "contact",
   initialState,
   reducers: {
-    deleteContact: (state, action: PayloadAction<number>) => {
-      state.list.filter((_, i) => i !== action.payload);
-    },
     initContacts: (state) => {
       return { list: [], page: 0 };
     },
@@ -61,11 +63,16 @@ export const contactSlice = createSlice({
         contact.id == action.payload.id ? action.payload : contact
       );
     });
+
+    builder.addCase(deleteContact.fulfilled, (state, action) => {
+      state.list = state.list.filter(
+        (contact) => contact.id !== action.payload.id
+      );
+    });
   },
 });
 
-export const { deleteContact, initContacts, increasePage } =
-  contactSlice.actions;
+export const { initContacts, increasePage } = contactSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.contacts;

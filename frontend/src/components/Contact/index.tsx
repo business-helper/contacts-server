@@ -6,7 +6,6 @@ import { deleteContact } from 'store/contact/slice';
 import { ReactComponent as EditIcon } from 'assets/edit.svg';
 import { ReactComponent as TrashIcon } from 'assets/trash.svg';
 import styles from './index.module.scss';
-import { connectAdvanced } from 'react-redux';
 
 interface IContactItemProps {
   contact: IContact;
@@ -26,8 +25,11 @@ export const ContactList: React.FC<IContactListProps> = ({ contacts }) => {
   const handleOnUpdate = (idx: number) => {
     navigate(`/contacts/${idx}`)
   }
+
   const handleOnDelete = (idx: number) => {
-    dispatch(deleteContact(idx));
+    if (window.confirm('Are you sure you want to delete this contact?')) {
+      dispatch(deleteContact(idx));
+    }
   }
 
   return (
