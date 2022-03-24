@@ -6,5 +6,5 @@ export interface IContact {
   age: number;
   avatar: string;
   linkToWebsite: string;
-  tags: string[];
+  tags: string; // comma-separated string
 }

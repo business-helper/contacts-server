@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from 'store/hooks';
+import { useAppSelector, useAppDispatch } from 'store/hooks';
+import { initContacts, getContacts } from 'store/contact/slice';
 import { ContactList } from 'components/Contact';
 
 export const HomePage: React.FC = () => {
   const navigate = useNavigate();
-  const contacts = useAppSelector(state => state.contacts);
+  const dispatch = useAppDispatch();
+  const contacts = useAppSelector(state => state.contacts.list);
+  const page = useAppSelector(state => state.contacts.page)
+
+  // const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (page === 0) {
+      dispatch(getContacts({ page: 1 }));
+    }
+  }, []);
 
   const handleOnAddContact = () => {
     navigate('/contacts/add');

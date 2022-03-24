@@ -6,7 +6,7 @@ import { ContactForm } from 'components/ContactForm';
 export const ContactDetailsPage: React.FC = () => {
   let { id } = useParams();
   const contactIndex = Number(id);
-  const contacts = useAppSelector(state => state.contacts);
+  const contacts = useAppSelector(state => state.contacts.list);
 
   return (
     <div>
