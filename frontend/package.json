@@ -50,8 +50,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.16.7",
     "autoprefixer": "^10.4.4",
     "postcss": "^8.4.12",
+    "redux-mock-store": "^1.5.4",
     "tailwindcss": "^3.0.23"
   }
 }
