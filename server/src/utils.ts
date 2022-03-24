@@ -1,5 +1,4 @@
-import { Request, Response } from "express";
-import fs from "fs";
+import { Response } from "express";
 
 type ValidationErrorDetails = {
   [key: string]: {
@@ -26,22 +25,5 @@ export function __error(
     status: false,
     message: error.message,
     details: error.details || [],
-  });
-}
-
-export function readFile(src: string) {
-  return new Promise<Buffer>((resolve, reject) => {
-    fs.readFile(src, (err, data) => {
-      if (err) reject(err);
-      resolve(data);
-    });
-  });
-}
-
-export function writeFile(dest: string, data: Buffer) {
-  return new Promise<string>((resolve, reject) => {
-    fs.writeFile(dest, data, (err) => {
-      err ? reject(err) : resolve(dest);
-    });
   });
 }

@@ -6,7 +6,7 @@ import multer from "multer";
 import { uuid } from "uuidv4";
 import Contact from "../models/Contact.model";
 
-import { ValidationError, __error, readFile, writeFile } from "../utils";
+import { ValidationError, __error } from "../utils";
 
 const upload = multer({ dest: "assets/" });
 
