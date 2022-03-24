@@ -1,12 +1,10 @@
 import express, { Request, Response } from "express";
-import { Validator } from "node-input-validator";
-import path from "path";
 import fs from "fs";
 import multer from "multer";
 import { uuid } from "uuidv4";
 import Contact from "../models/Contact.model";
 
-import { ValidationError, __error } from "../utils";
+import { __error } from "../utils";
 
 const upload = multer({ dest: "assets/" });
 

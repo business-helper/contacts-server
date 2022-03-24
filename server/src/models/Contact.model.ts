@@ -57,10 +57,6 @@ class Contact extends Model<IContactAttributes, IContactCreationAttributes> {
 
   @Column(DataType.STRING)
   tags: string;
-  // public get tags(): string[] {
-  //   let val = this.getDataValue("tags") || "";
-  //   return val.split(",").filter((tag) => tag);
-  // }
 
   @CreatedAt
   @Column
