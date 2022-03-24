@@ -8,15 +8,9 @@ export const HomePage: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const contacts = useAppSelector(state => state.contacts.list);
-  const page = useAppSelector(state => state.contacts.page)
-
-  // const [page, setPage] = useState(1);
 
   useEffect(() => {
-    if (page === 0) {
-      dispatch(increasePage())
-      dispatch(getContacts({ page: 1 }));
-    }
+    dispatch(getContacts({ page: 1 }));
   }, []);
 
   const handleOnAddContact = () => {

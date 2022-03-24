@@ -15,7 +15,8 @@ const initialState: IContactState = {
 
 export const getContacts = createAsyncThunk(
   "/contacts/getContacts",
-  ({ page, limit = 10 }: { page: number; limit?: number }, thunkAPI) => {
+  // limit = 50 assumes to loading all contacts on loading.
+  ({ page = 1, limit = 50 }: { page?: number; limit?: number }, thunkAPI) => {
     return contactProvider.getContactsRequest(page, limit);
   }
 );
@@ -51,7 +52,7 @@ export const contactSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(getContacts.fulfilled, (state, action) => {
-      state.list = state.list.concat(action.payload);
+      state.list = action.payload;
     });
 
     builder.addCase(addContact.fulfilled, (state, action) => {
