@@ -142,4 +142,24 @@ router.patch(
   }
 );
 
+/**
+ * @route [DELETE] /contacts/:id
+ * @description delete a contact by id.
+ * @param {string} id The id of the contact.
+ * @returns { status: boolean, message: string, data: Contact }
+ */
+router.delete("/:id", (req: Request, res: Response) => {
+  return Contact.findOne({ where: { id: req.params.id } })
+    .then((contact) => {
+      return Contact.destroy({ where: { id: req.params.id } }).then(() =>
+        res.json({
+          status: true,
+          message: "success",
+          data: contact,
+        })
+      );
+    })
+    .catch((error) => __error(res, error));
+});
+
 export default router;
