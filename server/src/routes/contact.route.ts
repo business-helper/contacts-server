@@ -27,6 +27,25 @@ router.route("/ping").get((req: Request, res: Response) => {
   //   .catch((error) => __error(res, error));
 });
 
+/**
+ * @route [POST] /contacts
+ * @description creates a new contact.
+ * @param {string} name
+ * @param {string} lastName
+ * @param {string} phoneNumber
+ * @param {string} email
+ * @param {number} age
+ * @param {string} avatar
+ * @param {file} avatarFile has the higher priority if exists, will replace 'avatar' field with the uploaded file.
+ * @param {string} linkToWebsite
+ * @param {string} tags comma-separated tags
+ * @returns {
+ *  status: boolean;
+ *  message: string;
+ *  data: Contact;
+ * } success response
+ *
+ */
 router.post("/", upload.single("avatarFile"), (req: Request, res: Response) => {
   return Promise.resolve()
     .then(() => {
@@ -62,6 +81,17 @@ router.get("/:id", (req: Request, res: Response) => {
   }).then((contact) => res.json(contact));
 });
 
+/**
+ * @route [GET] /contacts
+ * @description get the contact list by limit & page.
+ * @param {string} limit the maximum number of contact to load in a request. in query.
+ * @param {string} page the page index starting from 1. in query.
+ * @returns {
+ *    status: boolean;
+ *    message: string;
+ *    data: Contact[]
+ *  } success response
+ */
 router.get("/", (req: Request, res: Response) => {
   const limit = Number(req.query.limit) || 10;
   const page = Number(req.query.page) || 1;
