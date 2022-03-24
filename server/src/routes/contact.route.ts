@@ -58,8 +58,23 @@ router.post("/", upload.single("avatarFile"), (req: Request, res: Response) => {
 
 router.get("/:id", (req: Request, res: Response) => {
   return Contact.findOne({
-    where: { id: Number(req.params.id) },
+    where: { id: req.params.id },
   }).then((contact) => res.json(contact));
+});
+
+router.get("/", (req: Request, res: Response) => {
+  const limit = Number(req.query.limit) || 10;
+  const page = Number(req.query.page) || 1;
+  const offset = (page - 1) * limit;
+
+  return Contact.findAll({
+    limit,
+    offset,
+  })
+    .then((contacts) =>
+      res.json({ status: true, message: "success", data: contacts })
+    )
+    .catch((error) => __error(res, error));
 });
 
 export default router;
