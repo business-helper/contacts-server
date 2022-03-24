@@ -47,12 +47,12 @@ export const ContactList: React.FC<IContactListProps> = ({ contacts }) => {
         </thead>
         <tbody>
           {
-            contacts.length > 0 && contacts.map((contact, i) =>
+            contacts.length > 0 && contacts.map((contact) =>
               <ContactItem
-                key={i}
+                key={contact.id}
                 contact={contact}
-                onUpdate={() => handleOnUpdate(i)}
-                onDelete={() => handleOnDelete(i)} />)
+                onUpdate={() => handleOnUpdate(contact.id)}
+                onDelete={() => handleOnDelete(contact.id)} />)
           }
         </tbody>
       </table>

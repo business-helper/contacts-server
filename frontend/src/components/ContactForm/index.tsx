@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { IContactMutation, IContact } from 'types';
 import { useAppSelector, useAppDispatch } from 'store/hooks';
-import { addContact } from 'store/contact/slice';
+import { addContact, updateContact } from 'store/contact/slice';
 import { fileToDataUrl } from 'utils';
 
 interface IContactFormProps {
@@ -18,15 +18,10 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
   const [avatarFile, setAvatarFile] = useState<File>()
   const [avatarUrl, setAvatarUrl] = useState(contact?.avatar);
 
-  // const avatarUrl = useMemo(() => {
-  //   if (!avatarFile) return contact?.avatar;
-
-  //   return fileToDataUrl(avatarFile);
-  // }, [contact?.avatar, avatarFile]);
-
   useEffect(() => {
+    // if 'contact' exists(when editing a contact), fill the form with the given value.
     if (contact) {
-      const keys: Array<keyof IContact> = ['name', 'lastName', 'email', 'phoneNumber', 'age', 'linkToWebsite'];
+      const keys: Array<keyof IContact> = ['name', 'lastName', 'email', 'phoneNumber', 'age', 'linkToWebsite', 'tags'];
       keys.forEach((key) => setValue(key, contact[key]));
     }
 
@@ -41,7 +36,6 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
   }
 
   const handleOnSubmit = handleSubmit((data) => {
-    console.log('[data]', data);
     const formData = new FormData();
     Object.keys(data).forEach(key => {
       formData.append(key, data[key]);
@@ -50,8 +44,14 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
     if (avatarFile) {
       formData.append('avatarFile', avatarFile)
     }
-
-    const result = dispatch(addContact(formData))
+    if (contact) {
+      dispatch(updateContact({
+        id: contact.id,
+        data: formData
+      }))
+    } else {
+      dispatch(addContact(formData))
+    }
     navigate('/contacts');
   })
 

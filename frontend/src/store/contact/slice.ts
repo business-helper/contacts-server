@@ -15,25 +15,28 @@ const initialState: IContactState = {
 
 export const getContacts = createAsyncThunk(
   "/contacts/getContacts",
-  async ({ page, limit = 10 }: { page: number; limit?: number }, thunkAPI) => {
+  ({ page, limit = 10 }: { page: number; limit?: number }, thunkAPI) => {
     return contactProvider.getContactsRequest(page, limit);
   }
 );
 
 export const addContact = createAsyncThunk(
   "/contacts/createContact",
-  async (contactInfo: FormData, thunkAPI) => {
+  (contactInfo: FormData, thunkAPI) => {
     return contactProvider.addContactRequest(contactInfo);
   }
+);
+
+export const updateContact = createAsyncThunk(
+  "/contacts/updateContact",
+  ({ id, data }: { id: number; data: FormData }, thunkAPI) =>
+    contactProvider.updateContactRequest(id, data)
 );
 
 export const contactSlice = createSlice({
   name: "contact",
   initialState,
   reducers: {
-    // addContact: (state, action: PayloadAction<IContact>) => {
-    //   state.list.push(action.payload);
-    // },
     deleteContact: (state, action: PayloadAction<number>) => {
       state.list.filter((_, i) => i !== action.payload);
     },
@@ -51,6 +54,12 @@ export const contactSlice = createSlice({
 
     builder.addCase(addContact.fulfilled, (state, action) => {
       state.list.push(action.payload);
+    });
+
+    builder.addCase(updateContact.fulfilled, (state, action) => {
+      state.list = state.list.map((contact) =>
+        contact.id == action.payload.id ? action.payload : contact
+      );
     });
   },
 });

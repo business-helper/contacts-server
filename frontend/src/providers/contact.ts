@@ -1,14 +1,14 @@
 import type {
   IContact,
   IContactMutation,
-  IAPISuccessRespose,
+  IAPISuccessResponse,
   IAPIErrorResponse,
 } from "types";
 import { restAPI } from "./config";
 
 export function getContactsRequest(page: number, limit: number): Promise<any> {
   return restAPI
-    .get<IAPISuccessRespose>("/contacts", {
+    .get<IAPISuccessResponse>("/contacts", {
       params: { limit, page },
     })
     .then((res) => res.data.data as IContact[]);
@@ -16,7 +16,15 @@ export function getContactsRequest(page: number, limit: number): Promise<any> {
 
 export function addContactRequest(data: FormData) {
   return restAPI
-    .post<IAPISuccessRespose>("/contacts", data, {
+    .post<IAPISuccessResponse>("/contacts", data, {
+      headers: { "Content-Type": "multipart/form-data" },
+    })
+    .then((res) => res.data.data as IContact);
+}
+
+export function updateContactRequest(id: number, data: FormData) {
+  return restAPI
+    .patch<IAPISuccessResponse>(`/contacts/${id}`, data, {
       headers: { "Content-Type": "multipart/form-data" },
     })
     .then((res) => res.data.data as IContact);

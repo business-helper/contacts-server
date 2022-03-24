@@ -22,7 +22,7 @@ export interface IAPIResponseBase {
   message: string;
 }
 
-export interface IAPISuccessRespose {
+export interface IAPISuccessResponse {
   data: IContact | IContact[];
 }
 
