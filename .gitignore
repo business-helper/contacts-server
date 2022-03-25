@@ -2,6 +2,7 @@
 node_modules
 temp
 assets/*
+dist
 
 # env file
 .env
