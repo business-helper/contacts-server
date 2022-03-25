@@ -60,51 +60,51 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
       <form onSubmit={handleOnSubmit}>
         <div className="form-group">
           <label>Name</label>
-          <input {...register("name", { required: true, maxLength: 50 })} />
+          <input data-testid="input-name" type="text" {...register("name", { required: true, maxLength: 50 })} />
           {errors.name?.type == 'required' && <p className="form-error">Name is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Last Name</label>
-          <input {...register("lastName", { required: true, maxLength: 50 })} />
+          <input data-testid="input-lastName" type="text" {...register("lastName", { required: true, maxLength: 50 })} />
           {errors.lastName?.type == 'required' && <p className="form-error">Last name is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Email</label>
-          <input {...register("email", { required: true, maxLength: 50 })} />
+          <input data-testid="input-email" type="text" {...register("email", { required: true, maxLength: 50 })} />
           {errors.email?.type == 'required' && <p className="form-error">Email is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Phone Number</label>
-          <input {...register("phoneNumber", { required: true, maxLength: 15 })} />
+          <input data-testid="input-phoneNumber" type="text" {...register("phoneNumber", { required: true, maxLength: 15 })} />
           {errors.phoneNumber?.type == 'required' && <p className="form-error">PhoneNumber is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Age</label>
-          <input type="number" {...register("age", { required: true })} />
+          <input data-testid="input-age" type="number" {...register("age", { required: true })} />
           {errors.age?.type == 'required' && <p className="form-error">Age is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Avatar</label>
           {
-            avatarUrl && <img className="" src={avatarUrl} width="100" height="100" />
+            avatarUrl && <img data-testid="img-avatar" className="" src={avatarUrl} width="100" height="100" />
           }
-          <input className="text-light px-0" type="file" name="avatarFile" onChange={handleOnSelectFile} />
+          <input data-testid="input-avatarFile" className="text-light px-0" type="file" name="avatarFile" onChange={handleOnSelectFile} />
         </div>
 
         <div className="form-group">
           <label>Link To Website</label>
-          <input {...register("linkToWebsite")} />
+          <input data-testid="input-linkToWebsite" type="text" {...register("linkToWebsite")} />
           {errors.linkToWebsite?.type == 'required' && <p className="form-error">Website link is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Tags</label>
-          <textarea {...register("tags")} ></textarea>
+          <textarea data-testid="input-tags" {...register("tags")} ></textarea>
         </div>
 
         <div className="flex justify-center">
