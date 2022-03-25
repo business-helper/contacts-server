@@ -7,8 +7,8 @@ assets/*
 .env
 
 # lock files
-package-lock.json
-yarn.lock
+# package-lock.json
+# yarn.lock
 
 # build folder
 # dist
