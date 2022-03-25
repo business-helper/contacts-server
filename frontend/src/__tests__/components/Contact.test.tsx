@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, cleanup } from '@testing-library/react';
 import { ContactItem } from 'components/Contact';
 import contacts from 'data/contacts.json';
 
@@ -15,6 +15,8 @@ describe('Contact Item', () => {
       onDelete={handleOnClickDelete}
     />)
   })
+
+  afterEach(cleanup);
 
   test('should render avatar image', () => {
     const avatar = screen.getByTestId('contact-avatar');

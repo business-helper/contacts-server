@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup } from '@testing-library/react';
 import { ContactForm } from 'components/ContactForm';
 import { store } from 'store';
 
@@ -16,6 +16,8 @@ describe('ContactForm', () => {
       </Provider>
     )
   })
+
+  afterEach(cleanup)
 
   test('should have input fields with valid type', () => {
     ['name', 'lastName', 'email', 'phoneNumber', 'age', 'linkToWebsite', 'tags'].forEach(key => {
