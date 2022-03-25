@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3000";
+const baseUrl = Cypress.env("base_url");
 
 describe("Add Contact", () => {
   it("should not submit without required values filled", () => {
