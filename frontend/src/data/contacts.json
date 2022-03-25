@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Serina",
     "lastName": "Ross",
     "phoneNumber": "(514) 535-1340",
@@ -10,6 +11,7 @@
     "tags": "vestibulum,lorem,sit,amet,ultricies,sem,magna,nec,quam,Curabitur"
   },
   {
+    "id": 2,
     "name": "Xavier",
     "lastName": "Mckenzie",
     "phoneNumber": "1-489-834-3575",
@@ -20,6 +22,7 @@
     "tags": "rutrum,lorem,risus,Morbi,metus,Vivamus,euismod,urna,Nullam"
   },
   {
+    "id": 3,
     "name": "Kay",
     "lastName": "Black",
     "phoneNumber": "1-547-333-1673",

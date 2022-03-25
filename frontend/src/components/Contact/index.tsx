@@ -49,7 +49,7 @@ export const ContactList: React.FC<IContactListProps> = ({ contacts }) => {
         </thead>
         <tbody>
           {
-            contacts.length > 0 && contacts.map((contact) =>
+            contacts.map((contact) =>
               <ContactItem
                 key={contact.id}
                 contact={contact}
@@ -74,7 +74,7 @@ export const ContactItem: React.FC<IContactItemProps> = ({ contact, onDelete, on
   return (
     <tr>
       <td>
-        <img className={styles.avatar} src={contact.avatar} width="50" height="50" />
+        <img data-testid="contact-avatar" className={styles.avatar} src={contact.avatar} width="50" height="50" />
       </td>
       <td>{contact.name} {contact.lastName}</td>
       <td>{contact.email}</td>
@@ -89,9 +89,8 @@ export const ContactItem: React.FC<IContactItemProps> = ({ contact, onDelete, on
       <td>{contact.tags}</td>
       <td>
         <div className="flex items-center px-2">
-          {/* <img className={styles.editIcon} src={EditIcon} /> */}
-          <EditIcon className={styles.editIcon} onClick={onUpdate} />
-          <TrashIcon className={styles.trashIcon} onClick={onDelete} />
+          <EditIcon data-testid="edit-icon" className={styles.editIcon} onClick={onUpdate} />
+          <TrashIcon data-testid="delete-icon" className={styles.trashIcon} onClick={onDelete} />
         </div>
       </td>
     </tr>
