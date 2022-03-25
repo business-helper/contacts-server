@@ -24,6 +24,7 @@ export const HomePage: React.FC = () => {
           className="bg-primary-light text-light px-6 py-3 rounded-lg
             hover:bg-primary-1 transition-all duration-300
           "
+          data-testid="add-contact"
           onClick={handleOnAddContact}
         >
           Add Contact

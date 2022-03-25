@@ -24,3 +24,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# lock files
+yarn.lock
+package-lock.json
+
+# cypress
+cypress/videos
+cypress/screenshots
+.nyc_output
