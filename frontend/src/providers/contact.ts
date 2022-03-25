@@ -1,9 +1,4 @@
-import type {
-  IContact,
-  IContactMutation,
-  IAPISuccessResponse,
-  IAPIErrorResponse,
-} from "types";
+import type { IContact, IAPISuccessResponse } from "types";
 import { restAPI } from "./config";
 
 export function getContactsRequest(page: number, limit: number) {

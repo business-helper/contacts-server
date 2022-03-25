@@ -74,7 +74,7 @@ export const ContactItem: React.FC<IContactItemProps> = ({ contact, onDelete, on
   return (
     <tr>
       <td>
-        <img data-testid="contact-avatar" className={styles.avatar} src={contact.avatar} width="50" height="50" />
+        <img data-testid="contact-avatar" className={styles.avatar} src={contact.avatar} width="50" height="50" alt={`${contact.name} ${contact.lastName}`} />
       </td>
       <td>{contact.name} {contact.lastName}</td>
       <td>{contact.email}</td>
@@ -82,7 +82,14 @@ export const ContactItem: React.FC<IContactItemProps> = ({ contact, onDelete, on
       <td>{contact.age}</td>
       <td>
         {contact.linkToWebsite &&
-          <a className="hover:underline hover:text-light-1" target="_blank" href={contact.linkToWebsite}>Website</a>
+          <a
+            className="hover:underline hover:text-light-1"
+            target="_blank"
+            href={contact.linkToWebsite}
+            rel="noreferrer"
+          >
+            Website
+          </a>
         }
         {!contact.linkToWebsite && <span className="text-orange-700 text-sm">No Website Link</span>}
       </td>

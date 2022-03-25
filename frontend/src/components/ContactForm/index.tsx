@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { IContactMutation, IContact } from 'types';
-import { useAppSelector, useAppDispatch } from 'store/hooks';
+import { IContact } from 'types';
+import { useAppDispatch } from 'store/hooks';
 import { addContact, updateContact } from 'store/contact/slice';
 import { fileToDataUrl } from 'utils';
 
@@ -13,7 +13,7 @@ interface IContactFormProps {
 
 export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
   const navigate = useNavigate();
-  const { register, formState: { errors }, handleSubmit, getValues, setValue } = useForm()
+  const { register, formState: { errors }, handleSubmit, setValue } = useForm()
   const dispatch = useAppDispatch();
   const [avatarFile, setAvatarFile] = useState<File>()
   const [avatarUrl, setAvatarUrl] = useState(contact?.avatar);
@@ -26,7 +26,7 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
     }
 
     return () => { }
-  }, [contact]);
+  }, [contact, setValue]);
 
   const handleOnSelectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
@@ -61,37 +61,37 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
         <div className="form-group">
           <label>Name</label>
           <input data-testid="input-name" type="text" {...register("name", { required: true, maxLength: 50 })} />
-          {errors.name?.type == 'required' && <p className="form-error">Name is required!</p>}
+          {errors.name?.type === 'required' && <p className="form-error">Name is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Last Name</label>
           <input data-testid="input-lastName" type="text" {...register("lastName", { required: true, maxLength: 50 })} />
-          {errors.lastName?.type == 'required' && <p className="form-error">Last name is required!</p>}
+          {errors.lastName?.type === 'required' && <p className="form-error">Last name is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Email</label>
           <input data-testid="input-email" type="text" {...register("email", { required: true, maxLength: 50 })} />
-          {errors.email?.type == 'required' && <p className="form-error">Email is required!</p>}
+          {errors.email?.type === 'required' && <p className="form-error">Email is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Phone Number</label>
           <input data-testid="input-phoneNumber" type="text" {...register("phoneNumber", { required: true, maxLength: 15 })} />
-          {errors.phoneNumber?.type == 'required' && <p className="form-error">PhoneNumber is required!</p>}
+          {errors.phoneNumber?.type === 'required' && <p className="form-error">PhoneNumber is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Age</label>
           <input data-testid="input-age" type="number" {...register("age", { required: true })} />
-          {errors.age?.type == 'required' && <p className="form-error">Age is required!</p>}
+          {errors.age?.type === 'required' && <p className="form-error">Age is required!</p>}
         </div>
 
         <div className="form-group">
           <label>Avatar</label>
           {
-            avatarUrl && <img data-testid="img-avatar" className="" src={avatarUrl} width="100" height="100" />
+            avatarUrl && <img data-testid="img-avatar" className="" src={avatarUrl} width="100" height="100" alt="Avatar" />
           }
           <input data-testid="input-avatarFile" className="text-light px-0" type="file" name="avatarFile" onChange={handleOnSelectFile} />
         </div>
@@ -99,7 +99,6 @@ export const ContactForm: React.FC<IContactFormProps> = ({ contact }) => {
         <div className="form-group">
           <label>Link To Website</label>
           <input data-testid="input-linkToWebsite" type="text" {...register("linkToWebsite")} />
-          {errors.linkToWebsite?.type == 'required' && <p className="form-error">Website link is required!</p>}
         </div>
 
         <div className="form-group">

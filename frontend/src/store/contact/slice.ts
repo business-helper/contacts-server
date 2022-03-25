@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import type { IContact, IContactMutation } from "types";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import type { IContact } from "types";
 import type { RootState } from "store";
 import * as contactProvider from "providers/contact";
 
@@ -61,7 +61,7 @@ export const contactSlice = createSlice({
 
     builder.addCase(updateContact.fulfilled, (state, action) => {
       state.list = state.list.map((contact) =>
-        contact.id == action.payload.id ? action.payload : contact
+        contact.id === action.payload.id ? action.payload : contact
       );
     });
 

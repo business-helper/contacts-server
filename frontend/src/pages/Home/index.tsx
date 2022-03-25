@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from 'store/hooks';
-import { initContacts, getContacts, increasePage } from 'store/contact/slice';
+import { getContacts } from 'store/contact/slice';
 import { ContactList } from 'components/Contact';
 
 export const HomePage: React.FC = () => {
@@ -11,7 +11,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     dispatch(getContacts({ page: 1 }));
-  }, []);
+  }, [dispatch]);
 
   const handleOnAddContact = () => {
     navigate('/contacts/add');

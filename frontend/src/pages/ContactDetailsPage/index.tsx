@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from 'store/hooks';
 import { ContactForm } from 'components/ContactForm';
