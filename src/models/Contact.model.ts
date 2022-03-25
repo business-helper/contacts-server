@@ -3,6 +3,7 @@ import {
   Table,
   Column,
   PrimaryKey,
+  AutoIncrement,
   CreatedAt,
   UpdatedAt,
   Model,
@@ -28,6 +29,7 @@ interface IContactCreationAttributes
 @Table
 class Contact extends Model<IContactAttributes, IContactCreationAttributes> {
   @PrimaryKey
+  @AutoIncrement
   @Column
   id: number;
 
